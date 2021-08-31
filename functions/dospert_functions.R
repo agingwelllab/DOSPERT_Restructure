@@ -28,8 +28,3 @@ dsum <- function(dtotal_clean) {
   dtotal_sum <- dtotal_sum %>%
     arrange(record_id)
 }
-
-#create a function to regress RP and RB on RT
-reg_test <- function(dtotal_clean) {
-  lm(RT ~ RP + RB, data = dtotal_clean)
-}

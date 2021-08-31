@@ -218,47 +218,23 @@ pre code {
 <p>restructured dataframes adapted from <a href="https://github.com/schafik/dospert" class="uri">https://github.com/schafik/dospert</a></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBsb2FkIGxpYnJhcmllcyBhbmQgZGF0YVxubGlicmFyeShwbHlyKVxubGlicmFyeSh0aWR5dmVyc2UpXG5zb3VyY2UoJy9Vc2Vycy9zc3AxNjAyMzAvQm94L0FnaW5nIFdlbGwgTGFiL01lYXN1cmVzL0RPU1BFUlQzMC9UZXN0IEFuYWx5c2lzL2Z1bmN0aW9ucy9kb3NwZXJ0X2Z1bmN0aW9ucy5SJylcbmRvc3BlcnRfcmF3IDwtIHJlYWRfY3N2KCcvVXNlcnMvc3NwMTYwMjMwL0JveC9BZ2luZyBXZWxsIExhYi9NZWFzdXJlcy9ET1NQRVJUMzAvVGVzdCBBbmFseXNpcy9kYXRhL0RPU1BFUlRfZGF0YS5jc3YnKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBsb2FkIGxpYnJhcmllcyBhbmQgZGF0YVxubGlicmFyeSh0aWR5dmVyc2UpXG5zb3VyY2UoJy9Vc2Vycy9zc3AxNjAyMzAvZ2l0aHViX2RpcmVjdG9yeS9ET1NQRVJUX1JBbmFseXNpcy9mdW5jdGlvbnMvZG9zcGVydF9mdW5jdGlvbnMuUicpXG5kb3NwZXJ0X3JhdyA8LSByZWFkX2NzdignL1VzZXJzL3NzcDE2MDIzMC9naXRodWJfZGlyZWN0b3J5L0RPU1BFUlRfUkFuYWx5c2lzL2RhdGEvRE9TUEVSVF9kYXRhLmNzdicpXG5gYGAifQ== -->
 <pre class="r"><code># load libraries and data
-library(plyr)
 library(tidyverse)
-source(&#39;/Users/ssp160230/Box/Aging Well Lab/Measures/DOSPERT30/Test Analysis/functions/dospert_functions.R&#39;)
-dospert_raw &lt;- read_csv(&#39;/Users/ssp160230/Box/Aging Well Lab/Measures/DOSPERT30/Test Analysis/data/DOSPERT_data.csv&#39;)</code></pre>
+source(&#39;/Users/ssp160230/github_directory/DOSPERT_RAnalysis/functions/dospert_functions.R&#39;)
+dospert_raw &lt;- read_csv(&#39;/Users/ssp160230/github_directory/DOSPERT_RAnalysis/data/DOSPERT_data.csv&#39;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVncmVzc2lvbl9kbHBseVtbMl1dW1tcImNvZWZmaWNpZW50c1wiXV1bW1wiKEludGVyY2VwdClcIl1dXG5cbmBgYCJ9 -->
-<pre class="r"><code>regression_dlply[[2]][[&quot;coefficients&quot;]][[&quot;(Intercept)&quot;]]
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDYuMDU1OTg4XG4ifQ== -->
-<pre><code>[1] 6.055988</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI0xFRlQgT0ZGIEhFUkVcbnJlc3VsdCA8LSBhdHRyKHJlZ3Jlc3Npb25fZGxwbHksIFwic3BsaXRfbGFiZWxzXCIpXG5yZXN1bHRbLCA0XSA8LSBOQVxucmVzdWx0WywgNV0gPC0gTkFcbnJlc3VsdFssIDZdIDwtIE5BXG5jb2xuYW1lcyhyZXN1bHQpIDwtIGMoJ3JlY29yZF9pZCcsICdkb21haW4nLCAncV9udW1iZXInLCAnaW50JywgJ1JCJywgJ1JQJylcbiAgICBmb3IgKCBpIGluIDE6IGRpbShyZXN1bHQpWzFdICl7ICNmb3IgaSBpbiAxOjkwIChyZXN1bHRbY29sdW1uIDFdIGhhcyB0aGUgZGltZW5zaW9ucyAxeDkwKVxuICAgICAgcmVzdWx0JGludCA8LSByZWdyZXNzaW9uX2RscGx5W1tpXV1bW1wiY29lZmZpY2llbnRzXCJdXVtbXCIoSW50ZXJjZXB0KVwiXV1cbiAgICAgIHJlc3VsdCRSQiA8LSByZWdyZXNzaW9uX2RscGx5W1tpXV1bW1wiY29lZmZpY2llbnRzXCJdXVtbXCJSUFwiXV1cbiAgICAgIHJlc3VsdCRSUCA8LSByZWdyZXNzaW9uX2RscGx5W1tpXV1bW1wiY29lZmZpY2llbnRzXCJdXVtbXCJSQlwiXV1cbiAgICB9XG5gYGAifQ== -->
-<pre class="r"><code>#LEFT OFF HERE
-result &lt;- attr(regression_dlply, &quot;split_labels&quot;)
-result[, 4] &lt;- NA
-result[, 5] &lt;- NA
-result[, 6] &lt;- NA
-colnames(result) &lt;- c(&#39;record_id&#39;, &#39;domain&#39;, &#39;q_number&#39;, &#39;int&#39;, &#39;RB&#39;, &#39;RP&#39;)
-    for ( i in 1: dim(result)[1] ){ #for i in 1:90 (result[column 1] has the dimensions 1x90)
-      result$int &lt;- regression_dlply[[i]][[&quot;coefficients&quot;]][[&quot;(Intercept)&quot;]]
-      result$RB &lt;- regression_dlply[[i]][[&quot;coefficients&quot;]][[&quot;RP&quot;]]
-      result$RP &lt;- regression_dlply[[i]][[&quot;coefficients&quot;]][[&quot;RB&quot;]]
-    }</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZG9zcGVydF9jbGVhbiA8LSBkY2xlYW4oZG9zcGVydF9yYXcpXG5kb3NwZXJ0X3N1bSA8LSBkc3VtKGRvc3BlcnRfY2xlYW4pXG5gYGAifQ== -->
+<pre class="r"><code>dospert_clean &lt;- dclean(dospert_raw)
+dospert_sum &lt;- dsum(dospert_clean)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>need to come up with formula for risk-return model (dospert score)</p>
-<!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRE9TUEVSVF9hbmFseXNpc19mbiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKcmVzdHJ1Y3R1cmVkIGRhdGFmcmFtZXMgYWRhcHRlZCBmcm9tIDxodHRwczovL2dpdGh1Yi5jb20vc2NoYWZpay9kb3NwZXJ0PgoKYGBge3IgTG9hZCBMaWJyYXJpZXN9CiMgbG9hZCBsaWJyYXJpZXMgYW5kIGRhdGEKbGlicmFyeShwbHlyKQpsaWJyYXJ5KHRpZHl2ZXJzZSkKc291cmNlKCcvVXNlcnMvc3NwMTYwMjMwL0JveC9BZ2luZyBXZWxsIExhYi9NZWFzdXJlcy9ET1NQRVJUMzAvVGVzdCBBbmFseXNpcy9mdW5jdGlvbnMvZG9zcGVydF9mdW5jdGlvbnMuUicpCmRvc3BlcnRfcmF3IDwtIHJlYWRfY3N2KCcvVXNlcnMvc3NwMTYwMjMwL0JveC9BZ2luZyBXZWxsIExhYi9NZWFzdXJlcy9ET1NQRVJUMzAvVGVzdCBBbmFseXNpcy9kYXRhL0RPU1BFUlRfZGF0YS5jc3YnKQpgYGAKCmBgYHtyIEZ1bmN0aW9ucyB0byBSZWZvcm1hdCBEYXRhZnJhbWVzfQpkb3NwZXJ0X2NsZWFuIDwtIGRjbGVhbihkb3NwZXJ0X3JhdykKZG9zcGVydF9zdW0gPC0gZHN1bShkb3NwZXJ0X2NsZWFuKQpyZWdyZXNzaW9uX2RscGx5IDwtIGRscGx5KGRvc3BlcnRfY2xlYW4sIC4ocmVjb3JkX2lkLCBkb21haW4sIHFfbnVtYmVyKSwgZnVuY3Rpb24oZGF0YSkgbG0oUlQgfiBSUCArIFJCLCBkYXRhID0gZG9zcGVydF9jbGVhbikpCmBgYAoKYGBge3J9CiNMRUZUIE9GRiBIRVJFCnJlc3VsdCA8LSBhdHRyKHJlZ3Jlc3Npb25fZGxwbHksICJzcGxpdF9sYWJlbHMiKQpyZXN1bHRbLCA0XSA8LSBOQQpyZXN1bHRbLCA1XSA8LSBOQQpyZXN1bHRbLCA2XSA8LSBOQQpjb2xuYW1lcyhyZXN1bHQpIDwtIGMoJ3JlY29yZF9pZCcsICdkb21haW4nLCAncV9udW1iZXInLCAnaW50JywgJ1JCJywgJ1JQJykKICAgIGZvciAoIGkgaW4gMTogZGltKHJlc3VsdClbMV0gKXsgI2ZvciBpIGluIDE6OTAgKHJlc3VsdFtjb2x1bW4gMV0gaGFzIHRoZSBkaW1lbnNpb25zIDF4OTApCiAgICAgIHJlc3VsdCRpbnQgPC0gcmVncmVzc2lvbl9kbHBseVtbaV1dW1siY29lZmZpY2llbnRzIl1dW1siKEludGVyY2VwdCkiXV0KICAgICAgcmVzdWx0JFJCIDwtIHJlZ3Jlc3Npb25fZGxwbHlbW2ldXVtbImNvZWZmaWNpZW50cyJdXVtbIlJQIl1dCiAgICAgIHJlc3VsdCRSUCA8LSByZWdyZXNzaW9uX2RscGx5W1tpXV1bWyJjb2VmZmljaWVudHMiXV1bWyJSQiJdXQogICAgfQpgYGAKCgpuZWVkIHRvIGNvbWUgdXAgd2l0aCBmb3JtdWxhIGZvciByaXNrLXJldHVybiBtb2RlbCAoZG9zcGVydCBzY29yZSk=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRE9TUEVSVF9hbmFseXNpc19mbiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKcmVzdHJ1Y3R1cmVkIGRhdGFmcmFtZXMgYWRhcHRlZCBmcm9tIDxodHRwczovL2dpdGh1Yi5jb20vc2NoYWZpay9kb3NwZXJ0PgoKYGBge3IgTG9hZCBMaWJyYXJpZXN9CiMgbG9hZCBsaWJyYXJpZXMgYW5kIGRhdGEKbGlicmFyeSh0aWR5dmVyc2UpCnNvdXJjZSgnL1VzZXJzL3NzcDE2MDIzMC9naXRodWJfZGlyZWN0b3J5L0RPU1BFUlRfUkFuYWx5c2lzL2Z1bmN0aW9ucy9kb3NwZXJ0X2Z1bmN0aW9ucy5SJykKZG9zcGVydF9yYXcgPC0gcmVhZF9jc3YoJy9Vc2Vycy9zc3AxNjAyMzAvZ2l0aHViX2RpcmVjdG9yeS9ET1NQRVJUX1JBbmFseXNpcy9kYXRhL0RPU1BFUlRfZGF0YS5jc3YnKQpgYGAKCmBgYHtyIEZ1bmN0aW9ucyB0byBSZWZvcm1hdCBEYXRhZnJhbWVzfQpkb3NwZXJ0X2NsZWFuIDwtIGRjbGVhbihkb3NwZXJ0X3JhdykKZG9zcGVydF9zdW0gPC0gZHN1bShkb3NwZXJ0X2NsZWFuKQpgYGAK</div>
 
 
 
