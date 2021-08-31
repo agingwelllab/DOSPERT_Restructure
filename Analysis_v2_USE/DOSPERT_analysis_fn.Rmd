@@ -1,0 +1,37 @@
+---
+title: "DOSPERT_analysis_fn"
+output: html_notebook
+---
+
+restructured dataframes adapted from <https://github.com/schafik/dospert>
+
+```{r Load Libraries}
+# load libraries and data
+library(plyr)
+library(tidyverse)
+source('/Users/ssp160230/Box/Aging Well Lab/Measures/DOSPERT30/Test Analysis/functions/dospert_functions.R')
+dospert_raw <- read_csv('/Users/ssp160230/Box/Aging Well Lab/Measures/DOSPERT30/Test Analysis/data/DOSPERT_data.csv')
+```
+
+```{r Functions to Reformat Dataframes}
+dospert_clean <- dclean(dospert_raw)
+dospert_sum <- dsum(dospert_clean)
+regression_dlply <- dlply(dospert_clean, .(record_id, domain, q_number), function(data) lm(RT ~ RP + RB, data = dospert_clean))
+```
+
+```{r}
+#LEFT OFF HERE
+result <- attr(regression_dlply, "split_labels")
+result[, 4] <- NA
+result[, 5] <- NA
+result[, 6] <- NA
+colnames(result) <- c('record_id', 'domain', 'q_number', 'int', 'RB', 'RP')
+    for ( i in 1: dim(result)[1] ){ #for i in 1:90 (result[column 1] has the dimensions 1x90)
+      result$int <- regression_dlply[[i]][["coefficients"]][["(Intercept)"]]
+      result$RB <- regression_dlply[[i]][["coefficients"]][["RP"]]
+      result$RP <- regression_dlply[[i]][["coefficients"]][["RB"]]
+    }
+```
+
+
+need to come up with formula for risk-return model (dospert score)
