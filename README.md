@@ -5,7 +5,7 @@
   - Older versions of the code are in the Old Versions directory. These are unimportant files and can be ignored, just there in case they need to be referenced.
 - DOSPERT_scratch_pad is what I used to type and test code without cluttering the main notebook I was working on. This can also be ignored.
 
-# Functions
+## Functions
 - dclean(*df*) 
   - restructures the raw data frame from wide format to long format
   - input: raw data frame imported from CSV (*draw_df* in functions script)
