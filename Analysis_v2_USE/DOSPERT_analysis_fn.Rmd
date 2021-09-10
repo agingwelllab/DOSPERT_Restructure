@@ -3,12 +3,12 @@ title: "DOSPERT_analysis_fn"
 output: html_notebook
 ---
 
-restructured dataframes adapted from <https://github.com/schafik/dospert>
+restructured data frames adapted from <https://github.com/schafik/dospert>
 
 ```{r Load Libraries}
 # load libraries and data
 library(tidyverse)
-source('/Users/ssp160230/github_directory/DOSPERT_RAnalysis/functions/dospert_functions.R')
+source('/Users/ssp160230/github_directory/DOSPERT_RAnalysis/src/dospert_functions.R')
 dospert_raw <- read_csv('/Users/ssp160230/github_directory/DOSPERT_RAnalysis/data/DOSPERT_data.csv')
 ```
 
