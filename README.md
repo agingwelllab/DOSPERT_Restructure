@@ -1,8 +1,9 @@
 # DOSPERT_RAnalysis
 - Repo contains code to analyze data for DOSPERT30 exported from REDCap
 - Major changes to the code are saved as different versions
-  - v2 is the preferred version. v1 and v3 are unimportant, mainly there for reference to see what worked and what didn't
-- Scratch_pad is what I used to type and test code without cluttering the main notebook I was working on. This can also be ignored.
+  - DOSPERT_analysis is the cleanest, most recent version, utilizing functions sourced in the src directory.
+  - Older versions of the code are in the Old Versions directory. These are unimportant files and can be ignored, just there in case they need to be referenced.
+- DOSPERT_scratch_pad is what I used to type and test code without cluttering the main notebook I was working on. This can also be ignored.
 
 # Functions
 - dclean(*df*) 
@@ -18,5 +19,5 @@
   - input: clean data frame from dclean(*df*)'s output
   - output: data frame with sums for each domain (*dtotal_sum* in functions script)
     - 5 columns: same columns as dclean(*df*) -question number
-    - each record id has 5 rows (one for each domain)
+    - each record_id has 5 rows (one for each domain)
 

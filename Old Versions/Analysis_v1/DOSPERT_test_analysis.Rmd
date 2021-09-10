@@ -1,0 +1,96 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+#adapted from https://github.com/schafik/dospert
+
+```{r Load Libraries}
+# load libraries and data
+library(tidyverse)
+library(readr)
+library(tidyr)
+library(ggplot2)
+dospert_data_raw <- read_csv('/Users/ssp160230/Box/Aging Well Lab/Measures/DOSPERT30/Test Analysis/data/DOSPERT_data.csv')
+```
+
+```{r format original dataset}
+# remove unnecessary column for "complete" form status
+dospert_data_new <- select(dospert_data_raw, -dospert_complete)
+
+#make variables vector, convert to df
+Variables <- colnames(dospert_data_new[2:31])
+Variables_df <- data.frame(Variables)
+```
+
+```{r Separate Variable Names}
+#use variables_df to create separate columns from variable names
+#variable names written as (domain)(risk type)_(question #)
+#want to separate domain, risk type, and question number into columns
+Variables_separated <- Variables_df %>%
+  separate(Variables, c('domain', 'risk_type', 'Q_number'), '_')
+#remove risk_type column
+Variables_separated <- select(Variables_separated, -risk_type)
+```
+
+```{r Obtain Risk Values}
+#transpose df, record_ids become columns
+dospert_data_new_t <- data.frame(t(dospert_data_new[-1]))
+dospert_colnames <- dplyr::pull(dospert_data_new, record_id)
+colnames(dospert_data_new_t) <- dospert_colnames
+
+#make variables their own separate column, remove variable names from rownames
+dospert_data_new_t <- cbind(Variables = rownames(dospert_data_new_t), dospert_data_new_t)
+rownames(dospert_data_new_t) <- NULL
+
+#use this df to create separate df with responses for each record as a separate column
+risk_values <- data.frame(record_id = rep(colnames(dospert_data_new_t[2:4]), each=30),
+                           RT = c(dospert_data_new_t[1:30, "test_1"], dospert_data_new_t[1:30, "test_2"], dospert_data_new_t[1:30, "test_3"]),
+                           RP = c(dospert_data_new_t[31:60, "test_1"], dospert_data_new_t[31:60, "test_2"], dospert_data_new_t[31:60, "test_3"]),
+                           RB = c(dospert_data_new_t[61:90, "test_1"], dospert_data_new_t[61:90, "test_2"], dospert_data_new_t[61:90, "test_3"]))
+```
+
+```{r DOSPERT Clean}
+#bind risk_values and variables_separated dfs
+dospert_clean <- cbind(Variables_separated, risk_values)
+
+#move record_id column to column 1
+dospert_clean <- relocate(dospert_clean, "record_id")
+
+#arrange by record_id and domain
+dospert_clean <- dospert_clean %>%
+  arrange(record_id, domain)
+```
+
+```{r DOSPERT Sum}
+#create dospert_sum df with domain subscores for each record_id
+dospert_sum <- aggregate(cbind(RT,RP,RB) ~ record_id + domain, data = dospert_clean, FUN = sum)
+
+#sort data by record_id
+dospert_sum <- dospert_sum %>%
+  arrange(record_id)
+```
+
+```{r}
+#create graph for RT values
+dospert_RT_vis <- ggplot(data=dospert_sum,
+                         aes(x=record_id,y=RT)) + geom_point(aes(color=domain))
+dospert_RT_vis
+
+#create graph for RP values
+dospert_RP_vis <- ggplot(data=dospert_sum,
+                         aes(x=record_id,y=RP)) + geom_point(aes(color=domain))
+dospert_RP_vis
+
+#create graph for RB values
+dospert_RB_vis <- ggplot(data=dospert_sum,
+                         aes(x=record_id,y=RB)) + geom_point(aes(color=domain))
+dospert_RB_vis
+
+```
+
+```{r DOSPERT Score}
+#create new df for risk-return model scoring
+dospert_score <- dospert_clean %>%
+  select(-RT) 
+```
+
