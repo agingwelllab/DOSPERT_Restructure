@@ -1,5 +1,5 @@
 # DOSPERT_Restructure
-- Repo contains code to analyze data for the Domain-Specific Risk-Taking (DOSPERT) scale exported from REDCap
+- Repo contains code to restructure data for the Domain-Specific Risk-Taking (DOSPERT) scale exported from REDCap
 
 ## Functions
 - dclean(*df*) 
