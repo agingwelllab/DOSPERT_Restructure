@@ -11,7 +11,7 @@ library(tidyverse)
 source('/Users/ssp160230/github_directory/DOSPERT_Restructure/src/dospert_functions.R')
 
 # set hard-coded variables
-dospert_raw <- read_csv('/Users/ssp160230/github_directory/data/DOSPERT_data.csv')
+dospert_raw <- read_csv('/Users/ssp160230/github_directory/DOSPERT_Restructure/data/DOSPERT_data.csv')
 
 # clean and reformat raw data frame
 dospert_clean <- dclean(dospert_raw)
