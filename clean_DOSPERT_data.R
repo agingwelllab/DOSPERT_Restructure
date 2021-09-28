@@ -1,5 +1,5 @@
 # Clean DOSPERT30 data
-# 9.14.21 SP
+# 9.28.21 SP
 
 # restructured data frames adapted from 
 # <https://github.com/schafik/dospert>
@@ -21,5 +21,3 @@ dospert_clean <- dclean(dospert_raw)
 
 # calculate mean octant scores for each participant
 dospert_sum <- dsum(dospert_clean)
-
-
